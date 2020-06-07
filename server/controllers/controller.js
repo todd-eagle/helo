@@ -20,14 +20,13 @@ module.exports = {
         username: newUser[0].username
     }
       res.status(200).send(newUser)
-
     },
     login: async( req, res ) => {
      
       const db = req.app.get('db');
       const {username, password} = req.body 
 
-      const userFound = await(db.check_for_user(username))
+      const userFound = await db.check_for_user(username)
       
       if(!userFound[0]){
         return res.status(404).send('User not found! Please Register.')
@@ -42,19 +41,37 @@ module.exports = {
         }
         return res.status(200).send(req.session.user)
       }
-        return res.status(403).send('Email or password is incorrect')
+        res.status(403).send('Email or password is incorrect')
     },
     logout: (req, res) => {
       req.session.destroy();
       res.sendStatus(200);
     },
-    getUserPosts: ( req, res ) => {
+    getAllPosts: async( req, res ) => {
       const db = req.app.get('db');
+
+      const posts = await db.get_all_user_posts()
+
+      if(!posts[0]){
+        return res.status(404).send('post not found')
+      }
+
+      res.status(200).send(posts)
     },
-    sendPost: ( req, res ) => {
+    sendPost: async ( req, res ) => {
       const db = req.app.get('db');
+      const{title, img, content, author_id} = req.body
+
+      const post = await db.submit_user_post([title, img, content, author_id])
+     
+      if(!post[0]){
+        return res.status(500).send('Internal server error.  Cannot post right now')
+      }
+
+      return res.status(200).send(post)
     },
     getPost: ( req, res ) => {
       const db = req.app.get('db');
+
     }
   };

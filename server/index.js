@@ -19,8 +19,8 @@ app.use(
 
 app.post('/api/auth/register', ctrl.register)
 app.post('/api/auth/login', ctrl.login)
-app.get('/api/posts/:user_id', ctrl.getUserPosts)
-app.post('/api/post/:user_id', ctrl.sendPost)
+app.get('/api/posts', ctrl.getAllPosts)
+app.post('/api/post', ctrl.sendPost)
 app.get('/api/post/:user_id', ctrl.getPost)
 
 
