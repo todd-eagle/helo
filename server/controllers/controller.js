@@ -70,11 +70,18 @@ module.exports = {
         return res.status(500).send('Internal server error.  Cannot post right now')
       }
 
-      return res.status(200).send(post)
+      res.status(200).send(post)
     },
-    getPost: ( req, res ) => {
+    getPost: async( req, res ) => {
       const db = req.app.get('db');
+      const {user_id} = req.params
 
+      const userPost = await db.get_user_post(user_id)
+
+      if(!userPost[0]) {
+        return res.status(404).send('Post not found')
+      }
+      res.status(200).send(userPost)
     },
     searchPosts: async(req, res) => {
       const db = req.app.get('db');
