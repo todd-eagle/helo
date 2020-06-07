@@ -12,9 +12,11 @@ module.exports = {
         return res.status(409).send('User already exists')
       }
 
+      const profile_pic = `https://robohash.org/${username}`
+
       const hash = (bcryptjs.hashSync(password, bcryptjs.genSaltSync(10)))
 
-      const newUser = await db.register_user([username, hash])
+      const newUser = await db.register_user([username, hash, profile_pic])
       req.session.user = {
         id: newUser[0].id,
         username: newUser[0].username
