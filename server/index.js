@@ -22,6 +22,7 @@ app.post('/api/auth/login', ctrl.login)
 app.get('/api/posts', ctrl.getAllPosts)
 app.post('/api/post', ctrl.sendPost)
 app.get('/api/post/:user_id', ctrl.getPost)
+app.get('/api/search', ctrl.searchPosts)
 
 
 

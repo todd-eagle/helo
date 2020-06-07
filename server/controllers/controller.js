@@ -75,5 +75,20 @@ module.exports = {
     getPost: ( req, res ) => {
       const db = req.app.get('db');
 
+    },
+    searchPosts: async(req, res) => {
+      const db = req.app.get('db');
+      const {search} = req.body
+
+      console.log('Search criteria is: ', req.body)
+      
+      const searched = await db.search(search)
+
+      if(!searched[0]){
+        return res.status(404).send('No posts found')
+      }
+
+      return res.status(200).send(searched)
+
     }
   };

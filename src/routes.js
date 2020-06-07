@@ -1,15 +1,15 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Landing from './components/Landing';
-import Register from './components/Register';
-import Dashboard from './components/Dashboard';
-import Profile from './components/Profile';
+import Auth from './components/Auth/Auth';
+import Dashboard from './components/Dashboard/Dashboard';
+import Form from './components/Form/Form'
+import Post from './components/Post/Post'
 
 export default (
     <Switch>
-        <Route exact path="/" component={Landing}/>
-        <Route path="/COMPONENT1" component={Component1}/>
-        <Route path="/COMPONENT2" component={Component2}/>
-        <Route path="/COMPONENT3" component={Component3}/>
+        <Route exact path="/" component={Auth}/>
+        <Route path="/dashboard" component={Dashboard}/>
+        <Route path="/form" component={Form}/>
+        <Route path="/post" component={Post}/>
     </Switch>
 )

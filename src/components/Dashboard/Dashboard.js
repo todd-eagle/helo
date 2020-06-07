@@ -1,7 +1,8 @@
 import React,  {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux';
-import Post from '../Post/Post'
+// import Post from '../Post/Post'
+import {Link} from 'react-router-dom';
 
 class Dashboard extends Component {
   constructor(){
@@ -13,41 +14,67 @@ class Dashboard extends Component {
       }
   }
 
-  componentDidMount() {
-      this.getPosts()
-  }
+    componentDidMount() {
+        this.getPosts()
+    }
 
-  getPosts(){
+  
+    changeHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    getPosts(){
         axios.get('/api/posts')
         .then(res => {
             this.setState({
                 posts: res.data
             })
-        }).catch(err=>console.log(err))
-  }
+            console.log(this.state.posts)
 
+        }).catch(err=>console.log(err))
+    }
+
+    search(e){
+        e.preventDefault()
+        const {search} = this.state
+        console.log('state search is: ', search)
+        axios.get('/api/search', search)
+        .then(res => {
+            console.log(res.data)
+        }).catch(err=>console.log(err))
+    }
+    
     render(){
         const t = this.state.posts.map((element, index) => {
-           return <div>
-                    <div>{element.title}</div>
+             const postLink = "post/" + element.id
+           return <Link to={postLink}>
+                <div>
+                   <div>{element.title}</div>
                    <div> {element.username}</div>
                    
-                        <img src= {element.profile_pic} />
-                  </div>                
+                        <img src= {element.profile_pic} alt="User avatar"/>
+                </div>
+                </Link>                
         })
+
+        // const {search} = this.state
         return(
+        
             <div>
                 <div>
-                <form>
-                    <input 
-                        name="search"
-                        type="text"
-                        placeholder="Search"
-                    />
-                </form>
-                <button>Search</button>
-            </div>
-                {t}
+                    <form>
+                        <input 
+                            name="search"
+                            type="text"
+                            placeholder="Search"
+                            onChange={e => this.changeHandler(e)}
+                        />
+                    </form>
+                    <button onClick={e => this.search(e)}>Search</button>
+                </div>
+              {t}
             </div>
         )
     }
