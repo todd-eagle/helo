@@ -29,13 +29,24 @@ class Dashboard extends Component {
     render(){
         const t = this.state.posts.map((element, index) => {
            return <div>
-                    {element.title}
-                    {element.username}
-                    {element.profile_pic}
+                    <div>{element.title}</div>
+                   <div> {element.username}</div>
+                   
+                        <img src= {element.profile_pic} />
                   </div>                
         })
         return(
             <div>
+                <div>
+                <form>
+                    <input 
+                        name="search"
+                        type="text"
+                        placeholder="Search"
+                    />
+                </form>
+                <button>Search</button>
+            </div>
                 {t}
             </div>
         )
