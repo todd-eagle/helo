@@ -1,10 +1,21 @@
 import React,  {Component} from 'react'
+import {connect} from 'react-redux';
+import './Nav.css'
 
 
-export default class Nav extends Component {
+class Nav extends Component {
     render(){
         return(
-            <div>This is the NAV component</div>
+            <>
+           <nav className="App-nav">
+           <img src={this.props.user.profile_pic}  alt="profile pic"/>
+           <p>{this.props.user.username}</p>
+           </nav>
+           </>
         )
     }
 }
+
+const mapStateToProps =  reduxState => reduxState
+
+export default connect(mapStateToProps)(Nav)

@@ -1,0 +1,58 @@
+.App-auth-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(99deg,#ff70a6,#ff9770 40%,#ffd670 73%,#e9ff70);
+
+}
+
+.App-login-box{
+  display: flex;
+  flex-direction: column;  
+ align-items: center;
+  background-color:transparent;
+  width: 35vw;
+  height: 55vh;
+  border-radius: .8rem;
+  box-shadow: 0 14px 28px 0 rgba(0,0,0,.25), 0 10px 10px 0 rgba(0,0,0,.26);
+  padding-top: 3rem;
+}
+
+.App-login-heading {
+    color: white;
+    font-size: 8rem;
+}
+
+.App-login-form{
+    color: white;
+    font-size: 1.6rem;
+}
+
+.App-auth-box {
+    padding-bottom: 1rem;
+    width:30rem
+}
+
+
+.App-auth-box > input {
+    margin-left: 1rem;
+    color: black;
+    text-align: left;
+    padding: .2rem;
+}
+
+.App-login-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.App-Auth-button {
+    background-image: radial-gradient(circle at 50% -46%,#737373,#403d39);
+    padding: .8rem 1.8rem;
+    color:  white;
+    cursor: pointer;
+
+}

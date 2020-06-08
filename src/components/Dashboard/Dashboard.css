@@ -1,0 +1,18 @@
+.super {
+    display: flex;
+  }
+
+.App-dashboard{
+    display: flex;
+    background-color: #f3f3f3;
+}
+
+.App-dashboard-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    background-color: white;
+    margin-left: 25rem;
+}
