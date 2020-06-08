@@ -6,6 +6,7 @@ const initialState = {
 }
 
 const LOGIN_USER = 'LOGIN_USER'
+const LOGOUT_USER = 'LOGOUT_USER'
 
 export const login = (user) => {
     return {
@@ -14,12 +15,21 @@ export const login = (user) => {
     }
 }
 
+export const logout = () => {
+    return {
+        type: LOGOUT_USER,
+        payload: initialState
+    }
+}
+
 export default function (state = initialState, action){
     switch (action.type) {
         case LOGIN_USER:
-            console.log('Action.payload for LOGIN_USER',action.payload)
             return{...state, user: action.payload, isLogdgedIn: true}
+        case LOGOUT_USER:
+            return{...state, ...action.payload}
         default:
             return initialState
+
     }
 }

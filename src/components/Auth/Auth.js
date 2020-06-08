@@ -25,6 +25,7 @@ class Auth extends Component {
         axios.post('/api/auth/register', {username, password})
         .then( res => {
             this.props.login(res.data)
+            this.props.history.push('/dashboard')
         })
         .catch(err =>{console.log(err)})    
     }
@@ -35,6 +36,7 @@ class Auth extends Component {
         axios.post('/api/auth/login', {username, password})
         .then( res => {
             this.props.login(res.data)
+            this.props.history.push('/dashboard')
         })
         .catch(err =>{console.log(err)})    
     }

@@ -16,7 +16,6 @@ export default class Post extends Component {
 
     componentDidMount(){
         this.getPost()
-
     }
 
     getPost(){

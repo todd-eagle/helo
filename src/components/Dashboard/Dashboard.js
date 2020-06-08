@@ -18,7 +18,6 @@ class Dashboard extends Component {
         this.getPosts()
     }
 
-  
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -44,6 +43,15 @@ class Dashboard extends Component {
         .then(res => {
             console.log(res.data)
         }).catch(err=>console.log(err))
+    }
+
+    logout(){
+        axios.delete('/api/auth/logout')
+        .then(() => {
+            this.props.logout()
+            props.history.push('/')
+        })
+        .catch()
     }
     
     render(){
