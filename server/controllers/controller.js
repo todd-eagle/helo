@@ -19,9 +19,10 @@ module.exports = {
       const newUser = await db.register_user([username, hash, profile_pic])
       req.session.user = {
         id: newUser[0].id,
-        username: newUser[0].username
+        username: newUser[0].username,
+        profile_pic: newUser[0].profile_pic
     }
-      res.status(200).send(newUser)
+      res.status(200).send(req.session.user)
     },
     login: async( req, res ) => {
      
