@@ -44,8 +44,7 @@ export default class Post extends Component {
                     <div>{author} <img src={authorPicture} alt="Avatar Pic"/></div>
                 </div>
                 <div>
-                    <img src={img} 
-                    alt="Post picture"/>
+                    <img src={img} alt="pic"/>
                 </div>
                 <div>{content}</div>
             </>

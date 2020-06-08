@@ -3,6 +3,8 @@ import axios from 'axios'
 import {connect} from 'react-redux';
 // import Post from '../Post/Post'
 import {Link} from 'react-router-dom';
+import {logout} from '../../redux/reducer'
+
 
 class Dashboard extends Component {
   constructor(){
@@ -45,11 +47,11 @@ class Dashboard extends Component {
         }).catch(err=>console.log(err))
     }
 
-    logout(){
+    logoutUser(){
         axios.delete('/api/auth/logout')
         .then(() => {
             this.props.logout()
-            props.history.push('/')
+            this.props.history.push('/')
         })
         .catch()
     }
@@ -61,7 +63,6 @@ class Dashboard extends Component {
                 <div>
                    <div>{element.title}</div>
                    <div> {element.username}</div>
-                   
                         <img src= {element.profile_pic} alt="User avatar"/>
                 </div>
                 </Link>                
@@ -71,6 +72,7 @@ class Dashboard extends Component {
         return(
         
             <div>
+                <button onClick={e => this.logoutUser()}>Logout</button>
                 <div>
                     <form>
                         <input 
@@ -90,4 +92,4 @@ class Dashboard extends Component {
 
 const mapStateToProps =  reduxState => reduxState
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, {logout})(Dashboard)
