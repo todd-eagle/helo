@@ -12,6 +12,7 @@
     width:70%;
     background-color: white;
     margin-left: 15rem;
+    padding: 2rem;
 }
 
 .App-menu-container {
@@ -19,8 +20,10 @@
 
 .App-user-posts{
     width: 98%;
-    border: 1px solid black;
-    padding: 2rem
+    box-shadow: 1px 1px 2px rgb(167, 167, 167);
+    padding: 2rem;
+    margin-bottom: 1rem;
+    border-radius: .2rem;
 }
 
 .App-post-link {
@@ -46,3 +49,9 @@
     font-size: 1.5rem;
    
 }
+
+.App-user-info > p {
+    padding-right: 2rem;
+    align-self: flex-end;
+}
+
