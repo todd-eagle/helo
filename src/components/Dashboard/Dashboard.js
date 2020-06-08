@@ -61,20 +61,18 @@ class Dashboard extends Component {
     render(){
         const userPosts = this.state.posts.map((element, index) => {
              const postLink = "post/" + element.id
-           return <Link to={postLink}>
-                <div>
-                   <div>{element.title}</div>
-                   <div> {element.username}</div>
-                        <img src= {element.profile_pic} alt="User avatar"/>
-                </div>
-                </Link>                
+           return <div className="App-user-posts">
+                    <Link className="App-post-link" to={postLink}>
+                        <div className="App-post-title" >{element.title}</div>
+                        <div className="App-user-info"> <p>{element.username}</p><img className="App-post-avatar" src= {element.profile_pic} alt="User avatar"/></div>      
+                    </Link>       
+                </div>                   
         })
 
         // const {search} = this.state
         return(
-           <div className="super">
-                 <Nav />
             <div className="App-dashboard">
+                <div className="App-menu-container"><Nav /></div>
                
                 {/* <button onClick={e => this.logoutUser()}>Logout</button> */}
                 <div className="App-dashboard-container">
@@ -94,7 +92,6 @@ class Dashboard extends Component {
                     </div>
                 </div>
             </div>
-            </div>     
         )
     }
 }
