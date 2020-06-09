@@ -1,4 +1,5 @@
-// import axios from 'axios'
+import axios from 'axios'
+import { ActionType } from 'redux-promise-middleware'
 
 const initialState = {
    user: {},
@@ -16,6 +17,8 @@ export const login = (user) => {
 }
 
 export const logout = () => {
+    const destroySession = axios.delete('/api/auth/logout')
+    console.log('Destroyed session = ',destroySession)
     return {
         type: LOGOUT_USER,
         payload: initialState
@@ -23,10 +26,11 @@ export const logout = () => {
 }
 
 export default function (state = initialState, action){
+    console.log(action.type)
     switch (action.type) {
         case LOGIN_USER:
             return{...state, user: action.payload, isLogdgedIn: true}
-        case LOGOUT_USER:
+        case LOGOUT_USER  + '_FULFILLED':
             return{...state, ...action.payload}
         default:
             return initialState

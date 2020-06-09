@@ -49,15 +49,7 @@ class Dashboard extends Component {
         }).catch(err=>console.log(err))
     }
 
-    logoutUser(){
-        axios.delete('/api/auth/logout')
-        .then(() => {
-            this.props.logout()
-            this.props.history.push('/')
-        })
-        .catch()
-    }
-    
+
     render(){
         const userPosts = this.state.posts.map((element, index) => {
              const postLink = "post/" + element.id
@@ -74,9 +66,8 @@ class Dashboard extends Component {
             <div className="App-dashboard">
                 <div className="App-menu-container"><Nav /></div>
                
-                {/* <button onClick={e => this.logoutUser()}>Logout</button> */}
                 <div className="App-dashboard-container">
-                    <div className="App-searchbar">
+                    <div  className="App-searchbar">
                         <form>
                             <input 
                                 name="search"
