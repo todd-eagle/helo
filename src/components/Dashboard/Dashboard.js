@@ -49,7 +49,7 @@ class Dashboard extends Component {
         }).catch(err=>console.log(err))
     }
 
-
+    
     render(){
         const userPosts = this.state.posts.map((element, index) => {
              const postLink = "post/" + element.id
