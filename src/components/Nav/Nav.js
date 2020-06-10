@@ -39,5 +39,4 @@ class Nav extends Component {
 }
 
 const mapStateToProps =  reduxState => reduxState
-
 export default connect(mapStateToProps, {logout})(Nav)

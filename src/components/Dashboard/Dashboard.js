@@ -64,7 +64,6 @@ class Dashboard extends Component {
         // const {search} = this.state
         return(
             <div className="App-dashboard">
-                <div className="App-menu-container"><Nav /></div>
                
                 <div className="App-dashboard-container">
                     <div  className="App-searchbar">
