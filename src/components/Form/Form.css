@@ -1,0 +1,40 @@
+.App-form-page {
+    background-color: #F3F3F3;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App-form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    justify-content: center;
+    align-items: centers;
+
+}
+
+.App-form-post {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    justify-content: center;
+    align-items: centers;
+
+}
+
+form > h2{
+    color: #ff9770;
+    font-size: 4rem;
+}
+
+form > input, textarea {
+    width: 90%;
+}
+
+form > button {
+    width: 20rem;
+
+}

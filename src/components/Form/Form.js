@@ -1,6 +1,7 @@
 import React,  {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux';
+import './Form.css'
 
 
 class Form extends Component {
@@ -27,7 +28,9 @@ class Form extends Component {
         const {title, img, content} = this.state
         const author_id = this.props.user.id
         axios.post('/api/post', {title, img, content, author_id})
-        .then()
+        .then(res => {
+            this.props.history.push('/dashboard')
+        })
         .catch(err =>{console.log(err)})
     }
    
@@ -35,33 +38,41 @@ class Form extends Component {
         const {title, img, content} = this.state
         
         return(
-            <form>
-                <input 
-                    onChange={e => this.changeHandler(e)}
-                    type="text"
-                    name="title"
-                    value={title}
-                    placeholder="Enter Title"
-                    required
-                />
-                 <input 
-                    onChange={e => this.changeHandler(e)}
-                    type="text"
-                    name="img"
-                    value={img}
-                    placeholder="Enter Image Path"
-                    required
-                />
-                 <textarea 
-                    onChange={e => this.changeHandler(e)}
-                    name="content"
-                    value={content}
-                    placeholder="Type Post"
-                    required
-                >
-                </textarea>
-                <button onClick={e => this.post(e)}>Post</button>
-            </form>
+            <div className="App-form-page">
+                 <div className="App-form">
+                    <form className="App-form-post">
+                        <h2>New Post</h2>
+                        <p>Title:</p>
+                        <input 
+                            onChange={e => this.changeHandler(e)}
+                            type="text"
+                            name="title"
+                            value={title}
+                            placeholder="Enter Title"
+                            required
+                        />
+                        <p>Image URL:</p>
+                        <input 
+                            onChange={e => this.changeHandler(e)}
+                            type="text"
+                            name="img"
+                            value={img}
+                            placeholder="Enter Image Path"
+                            required
+                        />
+                        <p>Content:</p>
+                        <textarea 
+                            onChange={e => this.changeHandler(e)}
+                            name="content"
+                            value={content}
+                            placeholder="Type Post"
+                            required
+                        >
+                        </textarea>
+                        <button onClick={e => this.post(e)}>Post</button>
+                    </form>
+                </div>>    
+            </div>    
         )
     }
 }

@@ -1,5 +1,6 @@
 import React,  {Component} from 'react'
 import axios from 'axios'
+import './Post.css'
 
 
 export default class Post extends Component {
@@ -36,18 +37,23 @@ export default class Post extends Component {
       
         const {title, img, content, author, authorPicture} = this.state
         return(
-            <>
-                <div>
-                    <div>
-                         <h1>{title}</h1>
+            <div className="App-post-page">
+                <div className="App-post">
+                     <div className="App-top-wrapper">
+                        <div>
+                            <h1 className="App-titie-heading">{title}</h1>
+                        </div>
+                        <div className="App-author">by {author}<img className="App-author-img" src={authorPicture} alt="Avatar Pic"/></div>
+                    </div>    
+                        
+                    <div className="App-bottom-wrapper">
+                        <div>
+                                <img className="App-post-img" src={img} alt="pic"/>
+                        </div>
+                        <div className="App-content">{content}</div>
                     </div>
-                    <div>{author} <img src={authorPicture} alt="Avatar Pic"/></div>
                 </div>
-                <div>
-                    <img src={img} alt="pic"/>
-                </div>
-                <div>{content}</div>
-            </>
+            </div>
         )
     }
 }
