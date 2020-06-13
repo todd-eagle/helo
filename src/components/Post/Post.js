@@ -19,10 +19,9 @@ export default class Post extends Component {
         this.getPost()
     }
 
-    getPost(){
+    async getPost(){
         const {id} = this.props.match.params
-        axios.get(`/api/post/${id}`)
-        .then(res => {
+        const res = await axios.get(`/api/post/${id}`)
            this.setState({
             title: res.data[0].title,   
             img: res.data[0].img,
@@ -30,7 +29,7 @@ export default class Post extends Component {
             author: res.data[0].username,
             authorPicture:res.data[0].profile_pic
            })
-        }).catch(err =>{console.log(err)})
+      
     }
 
     render(){

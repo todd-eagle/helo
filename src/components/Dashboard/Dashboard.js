@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 // import Post from '../Post/Post'
 import {Link} from 'react-router-dom';
 import {logout} from '../../redux/reducer'
-import Nav from '../Nav/Nav'
 import './Dashboard.css'
 
 
@@ -22,7 +21,10 @@ class Dashboard extends Component {
         this.getPosts()
     }
 
- 
+    reset() {
+        this.getPosts()
+        this.setState({search: ''})
+    }
 
     changeHandler = (e) => {
         this.setState({
@@ -43,7 +45,6 @@ class Dashboard extends Component {
 
     search = (e) =>{
         e.preventDefault()
-        const body = {search: this.state.search}
         axios.get(`/api/search?search=${this.state.search}`)
         .then(res => {
             console.log("res.data is: ", res.data)
@@ -56,8 +57,8 @@ class Dashboard extends Component {
 
     
     render(){
-        console.log(this.state)
-        const userPosts = this.state.posts.map((element, index) => {
+        const {search, userposts} = this.state
+        const postsByUsers = this.state.posts.map((element, index) => {
              const postLink = "post/" + element.id
            return <div key={element.index} className="App-user-posts">
                     <Link className="App-post-link" to={postLink}>
@@ -76,15 +77,23 @@ class Dashboard extends Component {
                             <input 
                                 name="search"
                                 type="text"
-                                placeholder="Search"
+                                placeholder="Search by title"
                                 onChange={e => this.changeHandler(e)}
-                                value={this.state.search}
+                                value={search}
+                            />
+                            <input 
+                                type="checkbox"
+                                name="userposts"
+                                checked={userposts}
+                                onChange={e => this.setState({userposts: !userposts})}
                             />
                         </form>
+
                         <button onClick={e => this.search(e)}>Search</button>
+                        <button onClick={e => this.reset()}>Reset</button>
                     </div>
                     <div className="App-posts-container">
-                        {userPosts}
+                        {postsByUsers}
                     </div>
                 </div>
             </div>

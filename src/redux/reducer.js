@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { ActionType } from 'redux-promise-middleware'
 
 const initialState = {
    user: {},

@@ -88,7 +88,7 @@ module.exports = {
       const db = req.app.get('db');
       const {search} = req.query
 
-      console.log('Search criteria is: ', req.query)
+      //console.log('Search criteria is: ', req.query)
       
       const searched = await db.search(search)
 
