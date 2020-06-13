@@ -22,6 +22,8 @@ class Dashboard extends Component {
         this.getPosts()
     }
 
+ 
+
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -39,21 +41,25 @@ class Dashboard extends Component {
         }).catch(err=>console.log(err))
     }
 
-    search(e){
+    search = (e) =>{
         e.preventDefault()
-        const {search} = this.state
-        console.log('state search is: ', search)
-        axios.get('/api/search', search)
+        const body = {search: this.state.search}
+        axios.get(`/api/search?search=${this.state.search}`)
         .then(res => {
+            console.log("res.data is: ", res.data)
+            this.setState({
+                posts: res.data
+            })
             console.log(res.data)
         }).catch(err=>console.log(err))
     }
 
     
     render(){
+        console.log(this.state)
         const userPosts = this.state.posts.map((element, index) => {
              const postLink = "post/" + element.id
-           return <div className="App-user-posts">
+           return <div key={element.index} className="App-user-posts">
                     <Link className="App-post-link" to={postLink}>
                         <div className="App-post-title" >{element.title}</div>
                         <div className="App-user-info"> <p>{element.username}</p><img className="App-post-avatar" src= {element.profile_pic} alt="User avatar"/></div>      
@@ -61,7 +67,6 @@ class Dashboard extends Component {
                 </div>                   
         })
 
-        // const {search} = this.state
         return(
             <div className="App-dashboard">
                
@@ -73,6 +78,7 @@ class Dashboard extends Component {
                                 type="text"
                                 placeholder="Search"
                                 onChange={e => this.changeHandler(e)}
+                                value={this.state.search}
                             />
                         </form>
                         <button onClick={e => this.search(e)}>Search</button>

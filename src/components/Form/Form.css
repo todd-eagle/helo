@@ -8,11 +8,7 @@
 
 .App-form {
     background-color: white;
-    display: flex;
-    flex-direction: column;
-    width: 70vw;
-    justify-content: center;
-    align-items: centers;
+
 
 }
 

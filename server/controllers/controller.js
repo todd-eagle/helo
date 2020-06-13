@@ -86,9 +86,9 @@ module.exports = {
     },
     searchPosts: async(req, res) => {
       const db = req.app.get('db');
-      const {search} = req.body
+      const {search} = req.query
 
-      console.log('Search criteria is: ', req.body)
+      console.log('Search criteria is: ', req.query)
       
       const searched = await db.search(search)
 
