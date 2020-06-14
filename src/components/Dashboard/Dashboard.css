@@ -64,13 +64,14 @@
 .App-search-button {
     padding: .3rem;
     cursor: pointer;
-    height: 2.6rem;
-    width: 5rem;
+    height: 2.8rem;
+    width: 2.6rem;
     background-color: #ff9770;
 }
 
 .App-search-reset {
     color: white;
-    background-color: #403d39;
+    background-image: radial-gradient(circle at 50% -46%,#737373,#403d39);
+    padding: 0 1rem;
 }
 
