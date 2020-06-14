@@ -53,3 +53,24 @@
     align-self: flex-end;
 }
 
+.App-searchbar {
+    display: flex;
+}
+
+.App-searchbar > input {
+    width: 75%;
+}
+
+.App-search-button {
+    padding: .3rem;
+    cursor: pointer;
+    height: 2.6rem;
+    width: 5rem;
+    background-color: #ff9770;
+}
+
+.App-search-reset {
+    color: white;
+    background-color: #403d39;
+}
+
