@@ -21,6 +21,24 @@ class Dashboard extends Component {
         this.getPosts()
     }
 
+    setPosts(){
+        const {userposts} =this.state
+        console.log(userposts)
+        if (this.state.userposts === false){
+            console.log("Changed to false!!!!!!!!")
+            this.getPosts()
+        }else{
+            console.log("Changed to True!!!")
+            const posts1 = this.state.posts.filter((element, index)=> {
+                if (element.author_id === this.props.user.id ){
+                        return  element
+                    }
+                })
+            console.log(posts1)
+            this.setState({posts: posts1})
+        }
+    }
+
     reset() {
         this.getPosts()
         this.setState({search: ''})
@@ -81,11 +99,11 @@ class Dashboard extends Component {
                                 onChange={e => this.changeHandler(e)}
                                 value={search}
                             />
+                             My Posts: 
                             <input 
                                 type="checkbox"
                                 name="userposts"
-                                checked={userposts}
-                                onChange={e => this.setState({userposts: !userposts})}
+                                onChange={e =>  {this.setState({userposts: !userposts}); this.setPosts()}}
                             />
                         </form>
 
